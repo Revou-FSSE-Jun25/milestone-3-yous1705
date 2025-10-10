@@ -3,10 +3,8 @@ import Link from "next/link";
 import React from "react";
 
 export default function Home() {
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-100 px-4">
-
       <header className="mb-4 text-center">
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800">
           Pilih Mode Login Anda
@@ -30,8 +28,11 @@ export default function Home() {
           <p className="text-gray-500 mb-6">
             Belanja produk favorit Anda dengan mudah dan aman.
           </p>
-          <Link href='/products'
-            className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadowvhover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">Masuk Sekarang
+          <Link
+            href="/products"
+            className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadowvhover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          >
+            Masuk Sekarang
           </Link>
         </div>
 
@@ -49,7 +50,8 @@ export default function Home() {
           <p className="text-gray-500 mb-6">
             Kelola toko, produk, dan pesanan dengan dashboard admin.
           </p>
-          <Link href='/products'
+          <Link
+            href="/products"
             className="bg-gray-200 text-blue-700 font-semibold px-6 py-2 rounded-lg shadow 
                        hover:bg-gray-100 transition-colors duration-200 
                        focus:outline-none focus:ring-2 focus:ring-blue-200"

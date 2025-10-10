@@ -1,6 +1,6 @@
-import React from 'react'
-import Link from 'next/link'
-import { ProductData } from '@/types/product'
+import React from "react";
+import Link from "next/link";
+import { ProductData } from "@/types/product";
 
 function ProductCard({ product }: { product: ProductData }) {
   return (
@@ -16,7 +16,7 @@ function ProductCard({ product }: { product: ProductData }) {
       <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
       <p className="mt-1 text-lg font-medium text-gray-900">${product.price}</p>
     </Link>
-  )
+  );
 }
 
-export default ProductCard
+export default ProductCard;
