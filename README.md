@@ -1,38 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce App
 
-## Getting Started
+A simple e-commerce application built with **Next.js**, **React**, and **Tailwind CSS**.  
+This app displays a product list, product details, a shopping cart feature, and static pages.
 
-Sudah kah update?
+---
 
-First, run the development server:
+## 🚀 Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js** (App Router)
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **LocalStorage** (cart persistence)
+- **Fake Store API** (using [EscuelaJS API](https://api.escuelajs.co/api/v1/products) for products)
+
+---
+
+## 📦 Libraries & Tools
+
+- `next`
+- `react`
+- `tailwindcss`
+- `typescript`
+
+---
+
+## 📄 Pages
+
+| Path             | Description                            |
+| ---------------- | -------------------------------------- |
+| `/`              | Home page with User/Admin login option |
+| `/products`      | Product listing page                   |
+| `/products/[id]` | Product detail page                    |
+| `/cart`          | Shopping cart page                     |
+
+---
+
+## ✨ Features
+
+- **Product Listing:**  
+  Displays a grid of products with images, names, and prices.
+
+- **Product Detail:**  
+  Shows detailed information about a product (image, name, description, price).
+
+- **Add to Cart:**  
+  Add products to the cart directly from the listing page.
+
+- **Shopping Cart:**  
+  View added products, update quantity, remove items, and see total price.
+
+- **Cart Persistence:**  
+  Cart data remains saved even after refreshing the page (via localStorage).
+
+- **Dynamic Navbar:**  
+  Displays a badge with the number of products in the cart.
+
+- **Responsive Design:**  
+  Fully responsive layout for various screen sizes.
+
+---
+
+## 📂 Main Folder Structure
+
+```
+src/
+  app/
+    page.tsx           // Home
+    products/
+      page.tsx         // Product Listing
+      [id]/
+        page.tsx       // Product Detail
+    cart/
+      page.tsx         // Cart
+  component/
+    Navbar.tsx
+    Footer.tsx
+    ProductList.tsx
+    ProductCard.tsx
+    SearchBar.tsx
+  lib/
+    useCart.tsx
+    useFetchData.tsx
+  types/
+    product.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Product Listing:**  
+  Displays a grid of products with images, names, and prices.
 
-## Learn More
+- **Product Detail:**  
+  Shows detailed information about a product (image, name, description, price).
 
-To learn more about Next.js, take a look at the following resources:
+- **Add to Cart:**  
+  Add products to the cart directly from the listing page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Shopping Cart:**  
+  View added products, update quantity, remove items, and see total price.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Cart Persistence:**  
+  Cart data remains saved even after refreshing the page (via localStorage).
 
-## Deploy on Vercel
+- **Dynamic Navbar:**  
+  Displays a badge with the number of products in the cart.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Responsive Design:**  
+  Fully responsive layout for various screen sizes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Kontak
+
+## Email: [youssibarani17@gmail.com](mailto:youssibarani17@gmail.com)
