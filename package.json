@@ -1,14 +1,11 @@
 {
-  "homepage": "https://revou-fsse-jun25.github.io/milestone-3-yous1705",
   "name": "milestone-3-yous1705",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "start": "next start"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
