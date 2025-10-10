@@ -1,9 +1,5 @@
 import Product from "./product";
 
-interface ProductDetailPageProps {
-  params: { id: string };
-}
-
 export async function generateStaticParams() {
   const res = await fetch("https://api.escuelajs.co/api/v1/products");
   const products = await res.json();
@@ -13,8 +9,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductDetailPage(props: ProductDetailPageProps) {
-  const { id } = props.params;
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   return <Product id={id} />;
 }
