@@ -1,16 +1,11 @@
 import type { NextConfig } from "next";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
 const nextConfig: NextConfig = {
+  /* config options here */
   output: "export",
-  basePath,
-  assetPrefix: `${basePath}/`,
-  images: {
-    unoptimized: true,
-    domains: ["cdn.dummyjson.com", "image.google.com"],
-  },
-  trailingSlash: true,
+  images: { unoptimized: true },
+  basePath: "/milestone-3-yous1705",
+  assetPrefix: "/milestone-3-yous1705/",
 };
 
 export default nextConfig;
