@@ -10,12 +10,15 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = params;
+type PageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { id } = await params;
+
   const product = await api.getProductDetail(id);
   const allProducts = await api.getProduct();
 
