@@ -1,64 +1,79 @@
-"use client";
-import Link from "next/link";
-import React from "react";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-100 px-4">
-      <header className="mb-4 text-center">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800">
-          Pilih Mode Login Anda
-        </h1>
-        <p className="mt-2 text-gray-500 text-base md:text-lg">
-          Masuk sebagai pembeli atau admin toko untuk melanjutkan.
-        </p>
-      </header>
-
-      <div className="flex flex-col md:flex-row gap-6 mt-8 w-full max-w-3xl">
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+      >
         <div
-          className="flex-1 bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center 
-                     hover:scale-[1.03] hover:shadow-xl hover:border-blue-200 transition-all duration-300"
-        >
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-            <span className="text-blue-600 text-3xl font-bold">U</span>
-          </div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">
-            Masuk sebagai User
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-300 via-indigo-300 to-purple-300 opacity-40 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
+        />
+      </div>
+
+      <h1 className="text-4xl sm:text-6xl font-bold text-slate-900 mb-16 text-center">
+        Pilih Jenis Login
+      </h1>
+
+      <div className="flex flex-col sm:flex-row gap-10">
+        {/* Card User */}
+        <div className="bg-white border border-slate-200 rounded-2xl shadow-md hover:shadow-2xl p-8 w-80 text-center transition-all duration-300 hover:-translate-y-1">
+          <img
+            src="https://img.icons8.com/ios-filled/100/2979FF/user-male-circle.png"
+            alt="User Icon"
+            className="mx-auto mb-6"
+          />
+          <h2 className="text-2xl font-semibold text-slate-900 mb-3">
+            Login sebagai User
           </h2>
-          <p className="text-gray-500 mb-6">
-            Belanja produk favorit Anda dengan mudah dan aman.
+          <p className="text-slate-600 mb-6">
+            Masuk sebagai pengguna umum untuk mengakses fitur aplikasi.
           </p>
-          <Link
-            href="/products"
-            className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadowvhover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          <a
+            href="/login"
+            className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
-            Masuk Sekarang
-          </Link>
+            Masuk
+          </a>
         </div>
 
         {/* Card Admin */}
-        <div
-          className="flex-1 bg-white rounded-2xl shadow-lg border border-gray-200 p-8 flex flex-col items-center text-center 
-                     hover:scale-[1.03] hover:shadow-xl hover:border-gray-300 transition-all duration-300"
-        >
-          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <span className="text-blue-500 text-3xl font-bold">A</span>
-          </div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">
-            Masuk sebagai Admin
+        <div className="bg-white border border-slate-200 rounded-2xl shadow-md hover:shadow-2xl p-8 w-80 text-center transition-all duration-300 hover:-translate-y-1">
+          <img
+            src="https://img.icons8.com/ios-filled/100/2979FF/admin-settings-male.png"
+            alt="Admin Icon"
+            className="mx-auto mb-6"
+          />
+          <h2 className="text-2xl font-semibold text-slate-900 mb-3">
+            Login sebagai Admin
           </h2>
-          <p className="text-gray-500 mb-6">
-            Kelola toko, produk, dan pesanan dengan dashboard admin.
+          <p className="text-slate-600 mb-6">
+            Masuk sebagai administrator untuk mengelola data dan sistem.
           </p>
-          <Link
-            href="/products"
-            className="bg-gray-200 text-blue-700 font-semibold px-6 py-2 rounded-lg shadow 
-                       hover:bg-gray-100 transition-colors duration-200 
-                       focus:outline-none focus:ring-2 focus:ring-blue-200"
+          <a
+            href="/admin/login"
+            className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
-            Masuk Sekarang
-          </Link>
+            Masuk
+          </a>
         </div>
+      </div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-25rem)]"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+          className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-blue-300 via-indigo-300 to-purple-300 opacity-40 sm:left-[calc(50%+36rem)] sm:w-[72rem]"
+        />
       </div>
     </div>
   );

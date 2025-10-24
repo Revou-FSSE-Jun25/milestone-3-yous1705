@@ -1,122 +1,118 @@
-# E-Commerce App
+# RevoShop E-commerce Project
 
-A simple e-commerce application built with **Next.js**, **React**, and **Tailwind CSS**.  
-This app displays a product list, product details, a shopping cart feature, and static pages.
+A modern e-commerce application built with Next.js and TypeScript, featuring user and admin interfaces for product management and shopping.
 
----
+## Technologies Used
 
-## 🚀 Technologies Used
-
-- **Next.js** (App Router)
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **LocalStorage** (cart persistence)
-- **Fake Store API** (using [EscuelaJS API](https://api.escuelajs.co/api/v1/products) for products)
-
----
-
-## 📦 Libraries & Tools
-
-- `next`
-- `react`
-- `tailwindcss`
-- `typescript`
+- **Next.js 13** - React framework with App Router
+- **TypeScript** - For type-safe code
+- **Tailwind CSS** - For styling and responsive design
+- **React Context** - For state management (Shopping cart)
+- **Local Storage** - For persistent cart data
+- **JWT Authentication** - For secure user sessions
+- **External APIs**:
+  - Products API: [EscuelaJS API](https://api.escuelajs.co/api/v1/products)
+  - Auth API: [DummyJSON](https://dummyjson.com/auth/login)
 
 ---
 
-## 📄 Pages
+## Pages & Routes
 
-| Path             | Description                            |
-| ---------------- | -------------------------------------- |
-| `/`              | Home page with User/Admin login option |
-| `/products`      | Product listing page                   |
-| `/products/[id]` | Product detail page                    |
-| `/cart`          | Shopping cart page                     |
+### Public Routes
 
----
+- `/` - Landing page with user/admin login options
+- `/login` - User login page
+- `/admin/login` - Admin login page
 
-## ✨ Features
+### User Routes
 
-- **Product Listing:**  
-  Displays a grid of products with images, names, and prices.
+- `/products` - Product listing page with search functionality
+- `/products/[id]` - Product detail page
+- `/products/cart` - Shopping cart page
+- `/products/checkout` - Order checkout page
 
-- **Product Detail:**  
-  Shows detailed information about a product (image, name, description, price).
+### Admin Routes
 
-- **Add to Cart:**  
-  Add products to the cart directly from the listing page.
-
-- **Shopping Cart:**  
-  View added products, update quantity, remove items, and see total price.
-
-- **Cart Persistence:**  
-  Cart data remains saved even after refreshing the page (via localStorage).
-
-- **Dynamic Navbar:**  
-  Displays a badge with the number of products in the cart.
-
-- **Responsive Design:**  
-  Fully responsive layout for various screen sizes.
+- `/admin/dashboard` - Product management dashboard
+- `/admin/dashboard/create` - Create new product
+- `/admin/dashboard/update/[id]` - Update existing product
 
 ---
 
-## 📂 Main Folder Structure
+## Features
+
+### User Features
+
+- Product browsing with search functionality
+- Image carousel for product images
+- Shopping cart management
+- Checkout process
+- Responsive design for all devices
+
+### Admin Features
+
+- Product management (CRUD operations)
+- Dashboard with product listing
+- Search and filter products
+
+## Project Structure
 
 ```
-src/
-  app/
-    page.tsx           // Home
-    products/
-      page.tsx         // Product Listing
-      [id]/
-        page.tsx       // Product Detail
-    cart/
-      page.tsx         // Cart
-  component/
-    Navbar.tsx
-    Footer.tsx
-    ProductList.tsx
-    ProductCard.tsx
-    SearchBar.tsx
-  lib/
-    useCart.tsx
-    useFetchData.tsx
-  types/
-    product.ts
+milestone-3-yous1705/
+├── public/
+├── src/
+│   ├── app/               # Next.js 13 app router pages
+│   │   ├── admin/         # Admin-related pages
+│   │   │   ├── dashboard/ # Product management
+│   │   │   └── login/     # Admin login
+│   │   ├── login/         # User login
+│   │   └── products/      # Product pages
+│   │   │   ├── [id]/      # Product detail
+│   │   │   └── cart/      # User Cart
+│   │   │   └── checkout/  # Product checkout
+│   ├── components/        # Reusable components
+│   │   ├── Navbar.tsx
+│   │   ├── ProductCard.tsx
+│   │   ├── ProductImageCarousel.tsx
+│   │   ├── ProductList.tsx
+│   │   └── SearchBar.tsx
+│   ├── context/          # React Context
+│   │   └── CartContext.tsx
+│   ├── lib/             # Utilities
+│   │   ├── api.tsx      # API functions
+│   │   └── auth.tsx     # Auth helpers
+│   └── types/           # TypeScript types
+├── next.config.ts       # Next.js config
+└── tsconfig.json        # TypeScript config
 ```
 
 ---
 
-## ✨ Features
+## Getting Started
 
-- **Product Listing:**  
-  Displays a grid of products with images, names, and prices.
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Run the development server:
+   ```
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- **Product Detail:**  
-  Shows detailed information about a product (image, name, description, price).
+## Test Accounts
 
-- **Add to Cart:**  
-  Add products to the cart directly from the listing page.
+### Admin Account
 
-- **Shopping Cart:**  
-  View added products, update quantity, remove items, and see total price.
+- Username: logant
+- Password: logantpass
 
-- **Cart Persistence:**  
-  Cart data remains saved even after refreshing the page (via localStorage).
+### User Account
 
-- **Dynamic Navbar:**  
-  Displays a badge with the number of products in the cart.
+- Username: emilys
+- Password: emilyspass
 
-- **Responsive Design:**  
-  Fully responsive layout for various screen sizes.
+## Contact
 
----
-
-## Live Website
-
-➡️ [https://revou-fsse-jun25.github.io/milestone-3-yous1705/products](https://revou-fsse-jun25.github.io/milestone-3-yous1705/products)
-
-## Kontak
-
-## Email: [youssibarani17@gmail.com](mailto:youssibarani17@gmail.com)
+Email: [youssibarani17@gmail.com](mailto:youssibarani17@gmail.com)

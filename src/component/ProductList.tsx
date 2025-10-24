@@ -1,53 +1,32 @@
-import React, { useState } from "react";
-import { useFetchData } from "@/lib/useFetchData";
-import { ProductData } from "@/types/product";
+"use client";
+import React from "react";
+import { Product } from "@/type";
 import ProductCard from "./ProductCard";
-import SearchBar from "./SearchBar";
-import { useCart } from "@/lib/useCart";
+import { ProductListProps } from "@/type";
 
-function ProductList() {
-  const { products, loading, error } = useFetchData();
-  const [search, setSearch] = useState("");
-  const { cart, addToCart } = useCart();
-
-  const filteredProducts = products.filter(
-    (item: ProductData) =>
-      item.title.toLowerCase().includes(search.toLowerCase()) ||
-      item.description.toLowerCase().includes(search.toLowerCase())
-  );
-
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-
+function ProductList({ products }: ProductListProps) {
   return (
-    <div className="bg-white min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-6 text-center">
-          Products
-        </h2>
-
-        <SearchBar value={search} onChange={setSearch} />
-
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {filteredProducts.map((item: ProductData) => (
-              <div key={item.id}>
-                <ProductCard product={item} />
-                <button
-                  onClick={() => addToCart(item)}
-                  className="mt-2 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            ))}
+    <div className="w-full">
+      {products.length > 0 ? (
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-20 px-4">
+          <div className="bg-gradient-to-br from-slate-100 to-slate-200 rounded-full p-8 mb-6">
+            <span className="text-7xl">🔍</span>
           </div>
-        ) : (
-          <p className="text-center text-gray-500 col-span-full">
-            Produk tidak ditemukan.
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">
+            Tidak ada produk ditemukan
+          </h3>
+          <p className="text-slate-600 text-center max-w-md">
+            Kami tidak dapat menemukan produk yang sesuai dengan pencarian Anda.
+            Coba sesuaikan kata kunci pencarian.
           </p>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
