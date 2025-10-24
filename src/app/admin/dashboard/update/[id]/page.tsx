@@ -6,12 +6,17 @@ export async function generateStaticParams() {
     const products = await api.getProduct();
     return products.map((p: any) => ({ id: p.id.toString() }));
   } catch {
-    // fallback agar build tidak gagal kalau API down
     return [{ id: "1" }];
   }
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const product = await api.getProductDetail(params.id);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const product = await api.getProductDetail(id);
   return <UpdateProductPage product={product} />;
 }

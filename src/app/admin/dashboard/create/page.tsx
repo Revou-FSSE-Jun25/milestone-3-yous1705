@@ -170,7 +170,7 @@ function page() {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Enter product title"
-                className="w-full p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400"
+                className="w-full p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400 text-slate-800"
               />
             </div>
 
@@ -187,7 +187,7 @@ function page() {
                 placeholder="Enter price"
                 min="0"
                 step="0.01"
-                className="w-full p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400"
+                className="w-full p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400 text-slate-800"
               />
             </div>
 
@@ -201,7 +201,7 @@ function page() {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Enter product description"
-                className="w-full p-3 h-28 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none placeholder:text-slate-400"
+                className="w-full p-3 h-28 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none placeholder:text-slate-400 text-slate-800"
               />
             </div>
 
@@ -251,7 +251,7 @@ function page() {
                     value={img}
                     onChange={(e) => handleImageChange(index, e.target.value)}
                     placeholder={`https://example.com/image${index + 1}.jpg`}
-                    className="flex-1 p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400"
+                    className="flex-1 p-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none transition-all placeholder:text-slate-400 text-slate-800"
                   />
                   {img && img.startsWith("http") && (
                     <img
