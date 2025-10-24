@@ -5,28 +5,18 @@ import {
   waitFor,
   act,
 } from "@testing-library/react";
-import Page from "../update/[id]/page";
+import Page from "../update/[id]/UpdateProductPage";
+import { Product } from "@/type";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: jest.fn(),
     back: jest.fn(),
   }),
-  useParams: () => ({ id: "1" }),
-}));
-
-jest.mock("@/lib/auth", () => ({
-  isAuthenticated: jest.fn(() => true),
 }));
 
 jest.mock("@/lib/api", () => ({
   api: {
-    getProductDetail: jest.fn().mockResolvedValue({
-      title: "Test Product",
-      price: 5000,
-      description: "A product used for testing",
-      images: [],
-    }),
     updateProduct: jest.fn().mockResolvedValue({}),
   },
 }));
@@ -35,35 +25,49 @@ beforeAll(() => {
   window.alert = jest.fn();
 });
 
-describe("🧪 Update Product Page", () => {
+describe("🧪 Update Product Page (with props)", () => {
+  // lengkapkan mockProduct sesuai interface Product
+  const mockProduct: Product = {
+    id: 1,
+    title: "Test Product",
+    price: 5000,
+    description: "A product used for testing",
+    images: [],
+    category: {
+      id: 1,
+      name: "Test Category",
+    },
+    slug: 1, // sesuai tipe kamu slug: number
+    quantity: 10,
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("renders correctly with fetched data", async () => {
+  it("renders correctly with product props", async () => {
     await act(async () => {
-      render(<Page />);
+      render(<Page product={mockProduct} />);
     });
+
     const heading = await screen.findByRole("heading", {
       name: /Update Product/i,
     });
     expect(heading).toBeInTheDocument();
 
-    expect(await screen.findByDisplayValue("Test Product")).toBeInTheDocument();
-    expect(await screen.findByDisplayValue("5000")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Test Product")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("5000")).toBeInTheDocument();
     expect(
-      await screen.findByDisplayValue("A product used for testing")
+      screen.getByDisplayValue("A product used for testing")
     ).toBeInTheDocument();
   });
 
   it("updates form field values when typing", async () => {
     await act(async () => {
-      render(<Page />);
+      render(<Page product={mockProduct} />);
     });
 
-    await screen.findByRole("heading", { name: /Update Product/i });
-
-    const titleInput = screen.getByPlaceholderText("Enter product title");
+    const titleInput = screen.getByDisplayValue("Test Product");
     fireEvent.change(titleInput, { target: { value: "Updated Title" } });
     expect(titleInput).toHaveValue("Updated Title");
   });
@@ -73,10 +77,8 @@ describe("🧪 Update Product Page", () => {
     (api.updateProduct as jest.Mock).mockRejectedValueOnce(new Error("fail"));
 
     await act(async () => {
-      render(<Page />);
+      render(<Page product={mockProduct} />);
     });
-
-    await screen.findByRole("heading", { name: /Update Product/i });
 
     const button = screen.getByRole("button", { name: /Update Product/i });
     fireEvent.click(button);
@@ -88,15 +90,12 @@ describe("🧪 Update Product Page", () => {
 
   it("adds new image input when clicking 'Add Image'", async () => {
     await act(async () => {
-      render(<Page />);
+      render(<Page product={mockProduct} />);
     });
-
-    await screen.findByRole("heading", { name: /Update Product/i });
 
     const addButton = screen.getByRole("button", { name: /Add Image/i });
     fireEvent.click(addButton);
 
-    const imageInput = screen.getByPlaceholderText("Image URL #1");
-    expect(imageInput).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Image URL #1")).toBeInTheDocument();
   });
 });
