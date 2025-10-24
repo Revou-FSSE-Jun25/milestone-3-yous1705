@@ -48,14 +48,13 @@ jobs:
         with:
           static_site_generator: next
 
-      # ✅ Tambahkan environment variable di sini, bukan di langkah Setup Pages
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
       - name: Build with Next.js
         env:
           NEXT_PUBLIC_BASE_PATH: "/milestone-3-yous1705"
-        run: |
-          ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-          ${{ steps.detect-package-manager.outputs.runner }} next build
-          ${{ steps.detect-package-manager.outputs.runner }} next export
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
