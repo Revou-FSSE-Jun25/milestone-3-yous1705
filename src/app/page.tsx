@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,9 +24,11 @@ export default function Home() {
       <div className="flex flex-col sm:flex-row gap-10">
         {/* Card User */}
         <div className="bg-white border border-slate-200 rounded-2xl shadow-md hover:shadow-2xl p-8 w-80 text-center transition-all duration-300 hover:-translate-y-1">
-          <img
+          <Image
             src="https://img.icons8.com/ios-filled/100/2979FF/user-male-circle.png"
             alt="User Icon"
+            width={100}
+            height={100}
             className="mx-auto mb-6"
           />
           <h2 className="text-2xl font-semibold text-slate-900 mb-3">
@@ -34,19 +37,21 @@ export default function Home() {
           <p className="text-slate-600 mb-6">
             Masuk sebagai pengguna umum untuk mengakses fitur aplikasi.
           </p>
-          <a
+          <Link
             href="/login"
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
-          </a>
+          </Link>
         </div>
 
         {/* Card Admin */}
         <div className="bg-white border border-slate-200 rounded-2xl shadow-md hover:shadow-2xl p-8 w-80 text-center transition-all duration-300 hover:-translate-y-1">
-          <img
+          <Image
             src="https://img.icons8.com/ios-filled/100/2979FF/admin-settings-male.png"
             alt="Admin Icon"
+            width={100}
+            height={100}
             className="mx-auto mb-6"
           />
           <h2 className="text-2xl font-semibold text-slate-900 mb-3">
@@ -55,14 +60,15 @@ export default function Home() {
           <p className="text-slate-600 mb-6">
             Masuk sebagai administrator untuk mengelola data dan sistem.
           </p>
-          <a
+          <Link
             href="/admin/login"
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
-          </a>
+          </Link>
         </div>
       </div>
+
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-25rem)]"
