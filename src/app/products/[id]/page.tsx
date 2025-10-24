@@ -15,7 +15,8 @@ export default async function ProductDetailPage({
 }: {
   params: { id: string };
 }) {
-  const product = await api.getProductDetail(params.id);
+  const { id } = params;
+  const product = await api.getProductDetail(id);
   const allProducts = await api.getProduct();
 
   return <ProductDetail product={product} allProducts={allProducts} />;
