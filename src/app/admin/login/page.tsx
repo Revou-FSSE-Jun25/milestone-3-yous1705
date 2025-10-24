@@ -17,7 +17,7 @@ function page() {
     }
   }, [router]);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsLoading(true);
@@ -67,7 +67,10 @@ function page() {
 
         <form onSubmit={handleLogin} className="space-y-6">
           {error && (
-            <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm">
+            <div
+              role="alert"
+              className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm"
+            >
               {error}
             </div>
           )}
@@ -111,6 +114,7 @@ function page() {
           <button
             type="submit"
             disabled={isLoading}
+            data-testid="login-button"
             className={`w-full py-2.5 rounded-xl font-semibold text-white transition-all duration-300 ${
               isLoading
                 ? "bg-gradient-to-r from-blue-400 to-indigo-400 opacity-70 cursor-not-allowed"
