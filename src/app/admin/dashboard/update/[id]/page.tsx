@@ -11,7 +11,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params; // tidak perlu await
+  const { id } = params;
+
   const product = await api.getProductDetail(id);
   return <UpdateProductPage product={product} />;
 }
