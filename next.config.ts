@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     domains: ["cdn.dummyjson.com", "image.google.com"],
   },
+  trailingSlash: true,
 };
 
 export default nextConfig;
