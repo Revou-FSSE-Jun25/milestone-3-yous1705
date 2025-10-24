@@ -4,8 +4,6 @@ import { useRouter, useParams } from "next/navigation";
 import { api } from "@/lib/api";
 import { Product } from "@/type";
 import { isAuthenticated } from "@/lib/auth";
-import { title } from "process";
-import { set } from "react-hook-form";
 
 function page() {
   const { id } = useParams();
