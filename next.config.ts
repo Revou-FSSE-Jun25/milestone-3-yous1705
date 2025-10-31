@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   basePath: "/milestone-3-yous1705",
   assetPrefix: "/milestone-3-yous1705/",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/milestone-3-yous1705",
+  },
 };
 
 export default nextConfig;

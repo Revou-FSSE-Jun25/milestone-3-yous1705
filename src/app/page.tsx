@@ -40,7 +40,7 @@ export default function Home() {
             Masuk sebagai pengguna umum untuk mengakses fitur aplikasi.
           </p>
           <Link
-            href="/login"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH}/login`}
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
@@ -63,7 +63,7 @@ export default function Home() {
             Masuk sebagai administrator untuk mengelola data dan sistem.
           </p>
           <Link
-            href="/admin/login"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH}/admin/login`}
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
