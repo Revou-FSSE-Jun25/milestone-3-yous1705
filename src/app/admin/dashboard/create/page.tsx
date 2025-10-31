@@ -101,18 +101,26 @@ function page() {
         images: validImages,
       };
 
-      console.log("=== CREATE PAYLOAD ===");
-      console.log("Payload:", JSON.stringify(createPayload, null, 2));
+      // Debug logs: only print when not running tests to avoid noisy test output
+      if (process.env.NODE_ENV !== "test") {
+        console.log("=== CREATE PAYLOAD ===");
+        console.log("Payload:", JSON.stringify(createPayload, null, 2));
+      }
 
       const response = await api.createProduct(createPayload);
 
-      console.log("=== CREATE RESPONSE ===");
-      console.log("Response:", JSON.stringify(response, null, 2));
+      if (process.env.NODE_ENV !== "test") {
+        console.log("=== CREATE RESPONSE ===");
+        console.log("Response:", JSON.stringify(response, null, 2));
+      }
 
       alert("✅ Product created successfully!");
       router.push("/admin/dashboard");
     } catch (err: any) {
-      console.error("=== CREATE ERROR ===", err);
+      // Avoid noisy test output; log only outside of tests
+      if (process.env.NODE_ENV !== "test") {
+        console.error("=== CREATE ERROR ===", err);
+      }
       setError(err.message || "❌ Failed to create product");
     } finally {
       setIsLoading(false);

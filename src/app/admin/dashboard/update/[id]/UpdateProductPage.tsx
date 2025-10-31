@@ -35,7 +35,10 @@ function UpdateProductPage({ product }: { product: Product }) {
       alert("Product updated successfully!");
       router.push("/admin/dashboard");
     } catch (err) {
-      console.error(err);
+      // Avoid noisy console output during tests — only log in non-test environments
+      if (process.env.NODE_ENV !== "test") {
+        console.error(err);
+      }
       setError("Failed to update product");
     } finally {
       setSaved(false);
