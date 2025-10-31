@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -70,31 +67,25 @@ describe("Cart page", () => {
 
     expect(screen.getByText("Cart Item")).toBeInTheDocument();
 
-    // the quantity is the sibling of the minus button; locate minus and inspect its next sibling
     const minus = screen.getByText("−");
     const qtySpan = minus.nextElementSibling as HTMLElement;
     expect(qtySpan).toHaveTextContent("2");
 
-    // click minus
     fireEvent.click(minus);
     expect(updateQuantity).toHaveBeenCalledWith(10, 1);
 
-    // click plus
     const plus = screen.getByText("+");
     fireEvent.click(plus);
     expect(updateQuantity).toHaveBeenCalledWith(10, 3);
 
-    // remove item (button has title "Remove item")
     const removeBtn = screen.getByTitle("Remove item");
     fireEvent.click(removeBtn);
     expect(removeItem).toHaveBeenCalledWith(10);
 
-    // clear cart
     const clearBtn = screen.getByRole("button", { name: /Clear Cart/i });
     fireEvent.click(clearBtn);
     expect(clearCart).toHaveBeenCalled();
 
-    // proceed to checkout
     const checkoutBtn = screen.getByRole("button", {
       name: /Proceed to Checkout/i,
     });

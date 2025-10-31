@@ -1,6 +1,3 @@
-/**
- * @jest-environment jsdom
- */
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Page from "../create/page";
@@ -8,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import { isAuthenticated } from "@/lib/auth";
 
-// 🧩 Mock dependencies
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
@@ -31,7 +27,7 @@ describe("Create Product Page", () => {
     jest.clearAllMocks();
     (useRouter as jest.Mock).mockReturnValue({ push: pushMock });
     (isAuthenticated as jest.Mock).mockReturnValue(true);
-    // Default: mock categories
+
     (api.getAllCategories as jest.Mock).mockResolvedValue([
       { id: 1, name: "Test Category" },
     ]);
@@ -40,7 +36,6 @@ describe("Create Product Page", () => {
   it("renders form fields correctly", async () => {
     render(<Page />);
 
-    // Tunggu categories dimuat
     await waitFor(() => expect(api.getAllCategories).toHaveBeenCalledTimes(1));
 
     expect(
@@ -74,7 +69,6 @@ describe("Create Product Page", () => {
     render(<Page />);
     await waitFor(() => expect(api.getAllCategories).toHaveBeenCalled());
 
-    // Isi form
     fireEvent.change(screen.getByPlaceholderText(/Enter product title/i), {
       target: { value: "New Product" },
     });
@@ -88,11 +82,9 @@ describe("Create Product Page", () => {
       }
     );
 
-    // Pilih kategori
     const select = screen.getByRole("combobox");
     fireEvent.change(select, { target: { value: "1" } });
 
-    // Isi image
     const imageInput = screen.getByPlaceholderText(
       "https://example.com/image1.jpg"
     );

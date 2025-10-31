@@ -1,17 +1,12 @@
-/**
- * @jest-environment jsdom
- */
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-// router mock
 const pushMock = jest.fn();
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ push: pushMock }),
 }));
 
-// api mock
 const getProductMock = jest.fn();
 const deleteProductMock = jest.fn();
 jest.mock("@/lib/api", () => ({
@@ -56,7 +51,6 @@ describe("Admin Dashboard Page", () => {
   it("renders products and shows total count", async () => {
     render(<Page />);
 
-    // wait until the product title appears (loading finishes)
     await waitFor(() =>
       expect(screen.getByText("Product 1")).toBeInTheDocument()
     );
@@ -91,7 +85,6 @@ describe("Admin Dashboard Page", () => {
   });
 
   it("deletes product when Delete clicked and confirmed", async () => {
-    // mock confirm to return true
     jest.spyOn(window, "confirm").mockImplementation(() => true);
 
     render(<Page />);
@@ -104,7 +97,6 @@ describe("Admin Dashboard Page", () => {
 
     await waitFor(() => expect(deleteProductMock).toHaveBeenCalledWith(1));
 
-    // After deletion, the product title should no longer be in the document
     await waitFor(() =>
       expect(screen.queryByText("Product 1")).not.toBeInTheDocument()
     );
@@ -121,7 +113,6 @@ describe("Admin Dashboard Page", () => {
     const searchBtn = screen.getByRole("button", { name: /Cari/i });
     fireEvent.click(searchBtn);
 
-    // wait until the filtered results appear
     await waitFor(() =>
       expect(screen.getByText("Other Product")).toBeInTheDocument()
     );

@@ -1,6 +1,8 @@
 import { api } from "@/lib/api";
 import ProductDetail from "./ProductDetail";
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   try {
     const products = await api.getProduct();

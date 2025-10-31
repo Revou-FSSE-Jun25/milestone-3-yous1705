@@ -1,9 +1,9 @@
-"use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+export const revalidate = 60;
 
 export default function Home() {
-  const router = useRouter();
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center relative overflow-hidden">
       <div
@@ -39,12 +39,12 @@ export default function Home() {
           <p className="text-slate-600 mb-6">
             Masuk sebagai pengguna umum untuk mengakses fitur aplikasi.
           </p>
-          <button
-            onClick={() => router.push("/login")}
+          <Link
+            href="/login"
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
-          </button>
+          </Link>
         </div>
 
         {/* Card Admin */}
@@ -62,12 +62,12 @@ export default function Home() {
           <p className="text-slate-600 mb-6">
             Masuk sebagai administrator untuk mengelola data dan sistem.
           </p>
-          <button
-            onClick={() => router.push("/admin/login")}
+          <Link
+            href="/admin/login"
             className="inline-block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2 text-sm font-semibold text-white hover:from-blue-700 hover:to-indigo-700 transition-all"
           >
             Masuk
-          </button>
+          </Link>
         </div>
       </div>
 

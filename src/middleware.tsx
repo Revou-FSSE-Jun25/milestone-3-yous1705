@@ -29,12 +29,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginURL);
   }
 
-  if (pathname.startsWith("/products") && role === "admin") {
-    const loginURL = new URL("/", request.url);
-    loginURL.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginURL);
-  }
-
   return NextResponse.next();
 }
 
